@@ -1,4 +1,4 @@
-# ohana backend API ExpressJs and MongoDB
+# Starterpack backend API ExpressJs, JWT and MongoDB
 
 #### installation
 
