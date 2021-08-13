@@ -23,9 +23,12 @@ exports.postContoh = (req, res) => {
 //Contoh read
 exports.getContoh = (req, res) => {
   const judul = req.query.judul;
-  var condition = judul ? { judul: { $regex: new RegExp(judul), $options: "i" } } : {};
+  var condition = judul
+    ? { judul: { $regex: new RegExp(judul), $options: "i" } }
+    : {};
 
   Contoh.find(condition)
+    .sort({ createdAt: -1 })
     .then((data) => {
       res.send(data);
     })
@@ -40,12 +43,12 @@ exports.getContohById = (req, res) => {
   const id = req.params.id;
 
   Contoh.findById(id)
-    .then(data => {
+    .then((data) => {
       if (!data)
         res.status(404).send({ message: "Not found Contoh with id " + id });
       else res.send(data);
     })
-    .catch(err => {
+    .catch((err) => {
       res
         .status(500)
         .send({ message: "Error retrieving Contoh with id=" + id });
@@ -102,15 +105,15 @@ exports.delContoh = (req, res) => {
 
 exports.delAllContoh = (req, res) => {
   Contoh.deleteMany({})
-    .then(data => {
+    .then((data) => {
       res.send({
-        message: `${data.deletedCount} Contoh were deleted successfully!`
+        message: `${data.deletedCount} Contoh were deleted successfully!`,
       });
     })
-    .catch(err => {
+    .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while removing all Contoh."
+          err.message || "Some error occurred while removing all Contoh.",
       });
     });
 };
