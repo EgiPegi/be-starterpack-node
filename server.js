@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const dotenv = require('dotenv');
+dotenv.config();
 const dbConfig = require("./app/config/db.config");
 
 const app = express();
@@ -20,7 +22,7 @@ const db = require("./app/models");
 const Role = db.role;
 
 db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
+  .connect(dbConfig.DB_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
