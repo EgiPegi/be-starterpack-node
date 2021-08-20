@@ -8,6 +8,7 @@ const app = express();
 
 var whitelist = [
   "https://admin-pwa-starterpack.netlify.app",
+  "https://egipegi-react-redux-pwa.netlify.app",
   "http://localhost:3000",
   "http://localhost:5000"
 ];
